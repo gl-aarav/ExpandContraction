@@ -1,5 +1,4 @@
 /* Aarav Goyal
- * Period: 6
  * ExpandContraction.java
  */ 
 import java.util.Scanner;
