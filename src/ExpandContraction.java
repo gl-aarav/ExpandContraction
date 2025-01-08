@@ -9,6 +9,7 @@ public class ExpandContraction
 	private String expanded;
 	private Scanner kb;
 	private String quit;
+	private String contractedEnding;
 
 	public ExpandContraction( )
 	{
@@ -16,6 +17,7 @@ public class ExpandContraction
 		expanded = new String ("");
 		quit = new String ("");
 		kb = new Scanner (System.in);
+		contractedEnding= new String ("");
 	}
 
 	public static void main(String [] args)
@@ -44,26 +46,29 @@ public class ExpandContraction
 
 	public void processString ( )
 	{
-		int contractedLength = contracted.length();
-		String contractedEnding  = contracted.substring(contracted.length()-3, contracted.length());
-
-		if (contracted.equalsIgnoreCase("can\'t"))
-			expanded = "can not";
-		else if (contracted.equalsIgnoreCase("won\'t"))
-			expanded = "will not";
-		else if (contracted.equalsIgnoreCase("shant"))
-			expanded = "shall not";
-		else
+		if (contracted.length() > 3)
 		{
-			if (contractedEnding.equals("n\'t"))
-				expanded = contracted.substring(0,contractedLength-3) + " not";
+			contractedEnding  = contracted.substring(contracted.length()-3, contracted.length());
+		
+		if (contractedEnding.equals("n\'t"))
+		{
+			if (contracted.equalsIgnoreCase("can\'t"))
+				expanded = "can not";
+			else if (contracted.equalsIgnoreCase("won\'t"))
+				expanded = "will not";
+			else if (contracted.equalsIgnoreCase("shant"))
+				expanded = "shall not";
+			else
+				expanded = contracted.substring(0,contracted.length()-3) + " not";
+		}
 		}
 	}
 
 	public void printResult()
 	{
-		System.out.println("The expanded form of " + contracted + " is " + expanded + "\n\n");
+		if (contractedEnding.equals("n\'t"))
+			System.out.println("The expanded form of " + contracted + " is " + expanded + "\n\n");
+		else
+			System.out.println("Error, you did not enter a valid input.");
 	}
 }
-
-
