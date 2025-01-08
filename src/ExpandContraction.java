@@ -49,8 +49,7 @@ public class ExpandContraction
 		{
 			contractedEnding  = contracted.substring(contracted.length()-3, contracted.length());
 		
-		if (contractedEnding.equals("n\'t"))
-		{
+		
 			if (contracted.equalsIgnoreCase("can\'t"))
 				expanded = "can not";
 			else if (contracted.equalsIgnoreCase("won\'t"))
@@ -58,14 +57,16 @@ public class ExpandContraction
 			else if (contracted.equalsIgnoreCase("shant"))
 				expanded = "shall not";
 			else
-				expanded = contracted.substring(0,contracted.length()-3) + " not";
-		}
+			{
+				if (contractedEnding.equals("n\'t"))
+					expanded = contracted.substring(0,contracted.length()-3) + " not";
+			}
 		}
 	}
 
 	public void printResult()
 	{
-		if (contractedEnding.equals("n\'t"))
+		if (contractedEnding.equals("n\'t") || contracted.equalsIgnoreCase("shant"))
 			System.out.println("The expanded form of " + contracted + " is " + expanded + "\n\n");
 		else
 			System.out.println("Error, you did not enter a valid input.");
