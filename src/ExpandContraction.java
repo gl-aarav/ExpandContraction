@@ -35,11 +35,12 @@ public class ExpandContraction
 			System.out.println("Would you like to expand another contraction? Type quit to stop");
 			quit = kb.nextLine();
 		}while(!quit.equalsIgnoreCase("quit"));
+		System.out.println("\n\n\n");
 	}
 
 	public void getInput ( )
 	{
-		System.out.println("What contraction would you like to expand?");
+		System.out.println("\n\n\nWhat contraction would you like to expand?");
 		contracted = kb.nextLine();	
 	}
 
